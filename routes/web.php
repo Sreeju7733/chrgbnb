@@ -49,13 +49,15 @@ Route::middleware([SecurityHeaders::class])->group(function () {
             Route::post('/reservations/{id}/status', [\App\Http\Controllers\Host\DashboardController::class, 'updateReservationStatus'])->name('reservations.status');
         });
 
+        // Public search routes
+        Route::get('/driver/search', [ChargerSearchController::class, 'index'])->name('driver.search');
+        Route::post('/driver/search/api', [ChargerSearchController::class, 'search'])->name('driver.search.api');
+        Route::get('/driver/estimate/{chargerId}', [ChargerSearchController::class, 'estimatePrice'])->name('driver.estimate.price');
+
         Route::middleware(['auth', 'role:driver'])->prefix('driver')->name('driver.')->group(function () {
             Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-            Route::get('/search', [ChargerSearchController::class, 'index'])->name('search');
-            Route::post('/search/api', [ChargerSearchController::class, 'search'])->name('search.api');
-            Route::get('/estimate/{chargerId}', [ChargerSearchController::class, 'estimatePrice'])->name('estimate.price');
-
-            // Booking Flow
+            
+            // Booking Flow (Protected)
             Route::get('/book/{chargerId}', [\App\Http\Controllers\Driver\BookingController::class, 'create'])->name('book');
             Route::post('/book', [\App\Http\Controllers\Driver\BookingController::class, 'store'])->name('book.store');
             Route::get('/payment/{bookingId}', [\App\Http\Controllers\Driver\BookingController::class, 'payment'])->name('payment');

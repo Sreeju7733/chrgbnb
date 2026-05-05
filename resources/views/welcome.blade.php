@@ -261,12 +261,12 @@
                     <h1 class="hero-title">Rent a Charger, <br> Anywhere.</h1>
                     <p class="hero-subtitle">The world's first decentralized EV charging network. Find private chargers in neighborhoods or monetize your home station with chrgbnb.</p>
                     
-                    <div class="search-container d-none d-md-flex">
-                        <input type="text" class="search-input" placeholder="Where do you want to charge?">
+                    <form action="{{ route('driver.search') }}" method="GET" class="search-container d-none d-md-flex">
+                        <input type="text" name="location" class="search-input" placeholder="Where do you want to charge?" required>
                         <div class="search-divider"></div>
-                        <input type="text" class="search-input" placeholder="When?">
-                        <button class="btn btn-search">Search Now</button>
-                    </div>
+                        <input type="text" class="search-input" placeholder="Anytime">
+                        <button type="submit" class="btn btn-search">Search Now</button>
+                    </form>
 
                     <div class="d-flex gap-3 mt-4">
                         <div class="d-flex align-items-center gap-2">
@@ -347,6 +347,136 @@
                     <div class="feature-icon mx-auto"><i class="fas fa-charging-station"></i></div>
                     <h4 class="fw-bold">Charge & Go</h4>
                     <p class="text-muted">Arrive at the location, plug in, and pay securely through the app once finished.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why chrgbnb -->
+    <section class="py-100 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <img src="https://img.freepik.com/free-vector/shield-concept-illustration_114360-112.jpg" alt="Safety" class="img-fluid rounded-5 shadow-lg">
+                </div>
+                <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
+                    <h2 class="display-5 fw-bold mb-4">Safety First. Always.</h2>
+                    <p class="text-muted mb-5">We've built a community based on trust and transparency. Every charger and host on our platform undergoes a multi-step verification process.</p>
+                    
+                    <div class="d-flex gap-4 mb-4">
+                        <div class="feature-icon flex-shrink-0"><i class="fas fa-user-shield"></i></div>
+                        <div>
+                            <h5 class="fw-bold">Verified Hosts</h5>
+                            <p class="text-muted small">We verify identity and location for every single host on our network.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4 mb-4">
+                        <div class="feature-icon flex-shrink-0"><i class="fas fa-credit-card"></i></div>
+                        <div>
+                            <h5 class="fw-bold">Secure Escrow Payments</h5>
+                            <p class="text-muted small">Your money is held securely until your charging session is successfully completed.</p>
+                        </div>
+                    </div>
+                    <div class="d-flex gap-4">
+                        <div class="feature-icon flex-shrink-0"><i class="fas fa-headset"></i></div>
+                        <div>
+                            <h5 class="fw-bold">24/7 Roadside Assistance</h5>
+                            <p class="text-muted small">Our support team is always ready to help if you encounter any issues at a station.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Popular Destinations -->
+    <section class="py-100 bg-light">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-5" data-aos="fade-up">
+                <div>
+                    <h2 class="fw-bold display-5">Popular Destinations</h2>
+                    <p class="text-muted">Find reliable charging in the busiest areas.</p>
+                </div>
+                <a href="{{ route('driver.search') }}" class="btn btn-outline-primary rounded-pill px-4 fw-bold mb-2">View All Map</a>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="stat-card p-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="Bangalore">
+                        <div class="p-3">
+                            <h5 class="fw-bold mb-0">Indiranagar</h5>
+                            <small class="text-muted">42 Stations</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="stat-card p-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1590766948512-48366abc3d23?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="HSR">
+                        <div class="p-3">
+                            <h5 class="fw-bold mb-0">HSR Layout</h5>
+                            <small class="text-muted">38 Stations</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="stat-card p-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="Koramangala">
+                        <div class="p-3">
+                            <h5 class="fw-bold mb-0">Koramangala</h5>
+                            <small class="text-muted">56 Stations</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
+                    <div class="stat-card p-0 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1622312678602-5e60d5b410f9?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="Whitefield">
+                        <div class="p-3">
+                            <h5 class="fw-bold mb-0">Whitefield</h5>
+                            <small class="text-muted">29 Stations</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Member Experiences -->
+    <section class="py-100">
+        <div class="container text-center">
+            <h2 class="fw-bold display-5 mb-5" data-aos="fade-up">What our members say</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-right">
+                    <div class="stat-card">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="fst-italic text-muted">"Finding a charger at 11 PM in a new neighborhood was so easy with chrgbnb. The host was helpful and the station worked perfectly."</p>
+                        <hr class="opacity-10">
+                        <h6 class="fw-bold mb-0">Rahul S.</h6>
+                        <small class="text-muted">EV Driver since 2024</small>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="stat-card">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="fst-italic text-muted">"I earn enough from my home charger to pay for my entire electricity bill every month. Listing on chrgbnb was the best decision."</p>
+                        <hr class="opacity-10">
+                        <h6 class="fw-bold mb-0">Priya K.</h6>
+                        <small class="text-muted">Host in HSR Layout</small>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-left">
+                    <div class="stat-card">
+                        <div class="text-warning mb-3">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="fst-italic text-muted">"The dynamic pricing feature is a game-changer. I get fair rates and the hosts are always happy to help. Highly recommended!"</p>
+                        <hr class="opacity-10">
+                        <h6 class="fw-bold mb-0">Amit V.</h6>
+                        <small class="text-muted">Tesla Owner</small>
+                    </div>
                 </div>
             </div>
         </div>
