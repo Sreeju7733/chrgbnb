@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
         // 2. Active Chargers
         $totalChargers = Charger::count();
-        $availableChargers = Charger::where('is_available', true)->count();
+        $availableChargers = Charger::where('status', 'active')->count();
 
         // 3. Total Bookings
         $totalBookings = Booking::count();

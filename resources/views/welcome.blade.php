@@ -1,228 +1,243 @@
-    <title>chrgbnb | The Airbnb for EV Charging</title>
-    
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- AOS CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-dark: #1e40af;
-            --secondary: #6366f1;
-            --dark: #0f172a;
-            --text-muted: #64748b;
+<title>chrgbnb | The Airbnb for EV Charging</title>
+
+<!-- Google Fonts -->
+<link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- AOS CSS -->
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+<style>
+    :root {
+        --primary: #2563eb;
+        --primary-dark: #1e40af;
+        --secondary: #6366f1;
+        --dark: #0f172a;
+        --text-muted: #64748b;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        color: var(--dark);
+        overflow-x: hidden;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .brand {
+        font-family: 'Outfit', sans-serif;
+    }
+
+    /* Navbar */
+    .navbar {
+        padding: 1.5rem 0;
+        transition: all 0.3s;
+        background: transparent;
+    }
+
+    .navbar.scrolled {
+        background: white;
+        padding: 1rem 0;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    .navbar-brand {
+        font-weight: 800;
+        font-size: 1.8rem;
+        color: var(--primary) !important;
+        letter-spacing: -1px;
+    }
+
+    .nav-link {
+        font-weight: 600;
+        color: var(--dark) !important;
+        margin: 0 1rem;
+    }
+
+    .nav-link:hover {
+        color: var(--primary) !important;
+    }
+
+    /* Hero Section */
+    .hero {
+        padding: 160px 0 100px;
+        background: radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
+            radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero-title {
+        font-size: 4.5rem;
+        font-weight: 800;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(to right, var(--dark), var(--primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 2.5rem;
+        max-width: 600px;
+    }
+
+    /* Search Bar */
+    .search-container {
+        background: white;
+        padding: 10px;
+        border-radius: 100px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        max-width: 800px;
+        margin-bottom: 4rem;
+        border: 1px solid #f1f5f9;
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .search-container:focus-within {
+        transform: scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.12);
+    }
+
+    .search-input {
+        border: none;
+        padding: 15px 30px;
+        flex-grow: 1;
+        border-radius: 100px;
+        outline: none;
+        font-weight: 500;
+    }
+
+    .search-divider {
+        height: 30px;
+        width: 1px;
+        background: #e2e8f0;
+    }
+
+    .btn-search {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        border-radius: 100px;
+        font-weight: 700;
+        transition: all 0.3s;
+    }
+
+    .btn-search:hover {
+        background: var(--primary-dark);
+        transform: scale(1.05);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
+
+    /* Stats */
+    .stat-card {
+        background: white;
+        border-radius: 24px;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+        border: 1px solid #f1f5f9;
+        transition: all 0.3s;
+    }
+
+    .stat-card:hover {
+        transform: translateY(-10px);
+        border-color: var(--primary);
+        box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
+    }
+
+    .stat-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+    }
+
+    /* Features */
+    .feature-icon {
+        width: 64px;
+        height: 64px;
+        background: rgba(37, 99, 235, 0.1);
+        color: var(--primary);
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        transition: all 0.3s;
+    }
+
+    .col-md-4:hover .feature-icon {
+        background: var(--primary);
+        color: white;
+        transform: rotate(10deg);
+    }
+
+    /* CTA Section */
+    .cta-section {
+        background: var(--dark);
+        border-radius: 50px;
+        padding: 100px 0;
+        margin: 100px 0;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    /* Animations */
+    @keyframes float {
+        0% {
+            transform: translateY(0px);
         }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--dark);
-            overflow-x: hidden;
+        50% {
+            transform: translateY(-20px);
         }
 
-        h1, h2, h3, h4, .brand {
-            font-family: 'Outfit', sans-serif;
+        100% {
+            transform: translateY(0px);
         }
+    }
 
-        /* Navbar */
-        .navbar {
-            padding: 1.5rem 0;
-            transition: all 0.3s;
-            background: transparent;
-        }
+    .animate-float {
+        animation: float 6s ease-in-out infinite;
+    }
 
-        .navbar.scrolled {
-            background: white;
-            padding: 1rem 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-        }
+    .btn-primary {
+        background: var(--primary);
+        border: none;
+        border-radius: 100px;
+        padding: 12px 30px;
+        font-weight: 700;
+        transition: all 0.3s;
+    }
 
-        .navbar-brand {
-            font-weight: 800;
-            font-size: 1.8rem;
-            color: var(--primary) !important;
-            letter-spacing: -1px;
-        }
+    .btn-primary:hover {
+        background: var(--primary-dark);
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+    }
 
-        .nav-link {
-            font-weight: 600;
-            color: var(--dark) !important;
-            margin: 0 1rem;
-        }
-
-        .nav-link:hover {
-            color: var(--primary) !important;
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 160px 0 100px;
-            background: radial-gradient(circle at 90% 10%, rgba(37, 99, 235, 0.05) 0%, transparent 40%),
-                        radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.05) 0%, transparent 40%);
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-title {
-            font-size: 4.5rem;
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(to right, var(--dark), var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            margin-bottom: 2.5rem;
-            max-width: 600px;
-        }
-
-        /* Search Bar */
-        .search-container {
-            background: white;
-            padding: 10px;
-            border-radius: 100px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            max-width: 800px;
-            margin-bottom: 4rem;
-            border: 1px solid #f1f5f9;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .search-container:focus-within {
-            transform: scale(1.02);
-            box-shadow: 0 30px 60px rgba(0,0,0,0.12);
-        }
-
-        .search-input {
-            border: none;
-            padding: 15px 30px;
-            flex-grow: 1;
-            border-radius: 100px;
-            outline: none;
-            font-weight: 500;
-        }
-
-        .search-divider {
-            height: 30px;
-            width: 1px;
-            background: #e2e8f0;
-        }
-
-        .btn-search {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 15px 40px;
-            border-radius: 100px;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-
-        .btn-search:hover {
-            background: var(--primary-dark);
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
-
-        /* Stats */
-        .stat-card {
-            background: white;
-            border-radius: 24px;
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-            border: 1px solid #f1f5f9;
-            transition: all 0.3s;
-        }
-
-        .stat-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.1);
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        /* Features */
-        .feature-icon {
-            width: 64px;
-            height: 64px;
-            background: rgba(37, 99, 235, 0.1);
-            color: var(--primary);
-            border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: all 0.3s;
-        }
-
-        .col-md-4:hover .feature-icon {
-            background: var(--primary);
-            color: white;
-            transform: rotate(10deg);
-        }
-
-        /* CTA Section */
-        .cta-section {
-            background: var(--dark);
-            border-radius: 50px;
-            padding: 100px 0;
-            margin: 100px 0;
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .animate-float {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .btn-primary {
-            background: var(--primary);
-            border: none;
-            border-radius: 100px;
-            padding: 12px 30px;
-            font-weight: 700;
-            transition: all 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
-
-        footer {
-            padding: 80px 0 40px;
-            background: #f8fafc;
-        }
-    </style>
+    footer {
+        padding: 80px 0 40px;
+        background: #f8fafc;
+    }
+</style>
 </head>
+
 <body>
 
     <!-- Navbar -->
@@ -243,11 +258,13 @@
                     @guest
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign In</a></li>
                         <li class="nav-item ms-lg-3">
-                            <a class="btn btn-primary rounded-pill px-4 py-2 fw-bold" href="{{ route('register') }}">Join Now</a>
+                            <a class="btn btn-primary rounded-pill px-4 py-2 fw-bold" href="{{ route('register') }}">Join
+                                Now</a>
                         </li>
                     @else
                         <li class="nav-item ms-lg-3">
-                            <a class="btn btn-primary rounded-pill px-4 py-2 fw-bold" href="{{ route('dashboard') }}">Go to Dashboard <i class="fas fa-arrow-right ms-2"></i></a>
+                            <a class="btn btn-primary rounded-pill px-4 py-2 fw-bold" href="{{ route('dashboard') }}">Go to
+                                Dashboard <i class="fas fa-arrow-right ms-2"></i></a>
                         </li>
                     @endguest
                 </ul>
@@ -261,10 +278,12 @@
             <div class="row align-items-center">
                 <div class="col-lg-7" data-aos="fade-up" data-aos-delay="100">
                     <h1 class="hero-title">Rent a Charger, <br> Anywhere.</h1>
-                    <p class="hero-subtitle">The world's first decentralized EV charging network. Find private chargers in neighborhoods or monetize your home station with chrgbnb.</p>
-                    
+                    <p class="hero-subtitle">The world's first decentralized EV charging network. Find private chargers
+                        in neighborhoods or monetize your home station with chrgbnb.</p>
+
                     <form action="{{ route('driver.search') }}" method="GET" class="search-container d-none d-md-flex">
-                        <input type="text" name="location" class="search-input" placeholder="Where do you want to charge?" required>
+                        <input type="text" name="location" class="search-input"
+                            placeholder="Where do you want to charge?" required>
                         <div class="search-divider"></div>
                         <input type="text" class="search-input" placeholder="Anytime">
                         <button type="submit" class="btn btn-search">Search Now</button>
@@ -287,8 +306,10 @@
                 </div>
                 <div class="col-lg-5 d-none d-lg-block" data-aos="zoom-in" data-aos-delay="300">
                     <div class="position-relative animate-float">
-                        <img src="https://img.freepik.com/free-vector/ev-charging-station-concept-illustration_114360-6302.jpg" alt="EV Charging" class="img-fluid rounded-5 shadow-lg">
-                        <div class="position-absolute bottom-0 start-0 p-4 bg-white rounded-4 shadow-lg m-4 border animate-bounce" style="width: 200px;">
+                        <img src="{{ asset('images/hero_charger.png') }}" alt="EV Charging"
+                            class="img-fluid rounded-5 shadow-lg">
+                        <div class="position-absolute bottom-0 start-0 p-4 bg-white rounded-4 shadow-lg m-4 border animate-bounce"
+                            style="width: 200px;">
                             <div class="d-flex gap-2 align-items-center mb-2">
                                 <span class="badge bg-success rounded-pill">Active</span>
                                 <span class="small fw-bold">₹150/hr</span>
@@ -334,7 +355,9 @@
                 <div class="col-lg-6" data-aos="fade-right">
                     <h6 class="text-primary fw-bold text-uppercase mb-3">Our Mission</h6>
                     <h2 class="display-5 fw-bold mb-4">Democratizing Energy for a Greener Future.</h2>
-                    <p class="text-muted mb-4">At chrgbnb, we believe that the transition to electric vehicles shouldn't be limited by centralized infrastructure. We are building a community-driven network where anyone can share their energy and contribute to a sustainable world.</p>
+                    <p class="text-muted mb-4">At chrgbnb, we believe that the transition to electric vehicles shouldn't
+                        be limited by centralized infrastructure. We are building a community-driven network where
+                        anyone can share their energy and contribute to a sustainable world.</p>
                     <div class="row g-4 mb-5">
                         <div class="col-6">
                             <div class="d-flex align-items-center gap-2">
@@ -349,7 +372,8 @@
                             </div>
                         </div>
                     </div>
-                    <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-5 py-3 fw-bold">Learn Our Story</a>
+                    <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-5 py-3 fw-bold">Learn Our
+                        Story</a>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="row g-4">
@@ -366,7 +390,8 @@
                             </div>
                         </div>
                         <div class="col-12">
-                            <div class="stat-card bg-dark text-white border-0 py-4 d-flex align-items-center justify-content-center gap-3">
+                            <div
+                                class="stat-card bg-dark text-white border-0 py-4 d-flex align-items-center justify-content-center gap-3">
                                 <i class="fas fa-award fs-2 text-warning"></i>
                                 <div class="text-start">
                                     <h5 class="fw-bold mb-0">Best EV Startup 2026</h5>
@@ -391,17 +416,20 @@
                 <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="100">
                     <div class="feature-icon mx-auto"><i class="fas fa-map-marked-alt"></i></div>
                     <h4 class="fw-bold">Find a Spot</h4>
-                    <p class="text-muted">Browse verified chargers near your destination and check availability in real-time.</p>
+                    <p class="text-muted">Browse verified chargers near your destination and check availability in
+                        real-time.</p>
                 </div>
                 <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="200">
                     <div class="feature-icon mx-auto"><i class="fas fa-calendar-check"></i></div>
                     <h4 class="fw-bold">Book Instantly</h4>
-                    <p class="text-muted">Reserve your slot with one tap. No more waiting in queues or finding broken chargers.</p>
+                    <p class="text-muted">Reserve your slot with one tap. No more waiting in queues or finding broken
+                        chargers.</p>
                 </div>
                 <div class="col-md-4 text-center" data-aos="fade-up" data-aos-delay="300">
                     <div class="feature-icon mx-auto"><i class="fas fa-charging-station"></i></div>
                     <h4 class="fw-bold">Charge & Go</h4>
-                    <p class="text-muted">Arrive at the location, plug in, and pay securely through the app once finished.</p>
+                    <p class="text-muted">Arrive at the location, plug in, and pay securely through the app once
+                        finished.</p>
                 </div>
             </div>
         </div>
@@ -412,31 +440,36 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6" data-aos="fade-right">
-                    <img src="https://img.freepik.com/free-vector/shield-concept-illustration_114360-112.jpg" alt="Safety" class="img-fluid rounded-5 shadow-lg">
+                    <img src="https://img.freepik.com/free-vector/shield-concept-illustration_114360-112.jpg"
+                        alt="Safety" class="img-fluid rounded-5 shadow-lg">
                 </div>
                 <div class="col-lg-6 ps-lg-5" data-aos="fade-left">
                     <h2 class="display-5 fw-bold mb-4">Safety First. Always.</h2>
-                    <p class="text-muted mb-5">We've built a community based on trust and transparency. Every charger and host on our platform undergoes a multi-step verification process.</p>
-                    
+                    <p class="text-muted mb-5">We've built a community based on trust and transparency. Every charger
+                        and host on our platform undergoes a multi-step verification process.</p>
+
                     <div class="d-flex gap-4 mb-4">
                         <div class="feature-icon flex-shrink-0"><i class="fas fa-user-shield"></i></div>
                         <div>
                             <h5 class="fw-bold">Verified Hosts</h5>
-                            <p class="text-muted small">We verify identity and location for every single host on our network.</p>
+                            <p class="text-muted small">We verify identity and location for every single host on our
+                                network.</p>
                         </div>
                     </div>
                     <div class="d-flex gap-4 mb-4">
                         <div class="feature-icon flex-shrink-0"><i class="fas fa-credit-card"></i></div>
                         <div>
                             <h5 class="fw-bold">Secure Escrow Payments</h5>
-                            <p class="text-muted small">Your money is held securely until your charging session is successfully completed.</p>
+                            <p class="text-muted small">Your money is held securely until your charging session is
+                                successfully completed.</p>
                         </div>
                     </div>
                     <div class="d-flex gap-4">
                         <div class="feature-icon flex-shrink-0"><i class="fas fa-headset"></i></div>
                         <div>
                             <h5 class="fw-bold">24/7 Roadside Assistance</h5>
-                            <p class="text-muted small">Our support team is always ready to help if you encounter any issues at a station.</p>
+                            <p class="text-muted small">Our support team is always ready to help if you encounter any
+                                issues at a station.</p>
                         </div>
                     </div>
                 </div>
@@ -452,12 +485,14 @@
                     <h2 class="fw-bold display-5">Popular Destinations</h2>
                     <p class="text-muted">Find reliable charging in the busiest areas.</p>
                 </div>
-                <a href="{{ route('driver.search') }}" class="btn btn-outline-primary rounded-pill px-4 fw-bold mb-2">View All Map</a>
+                <a href="{{ route('driver.search') }}"
+                    class="btn btn-outline-primary rounded-pill px-4 fw-bold mb-2">View All Map</a>
             </div>
             <div class="row g-4">
                 <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
                     <div class="stat-card p-0 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1596895111956-bf1cf0599ce5?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="Bangalore">
+                        <img src="{{ asset('images/destinations/indiranagar.png') }}" class="img-fluid" alt="Bangalore"
+                            style="height: 200px; width: 100%; object-fit: cover;">
                         <div class="p-3">
                             <h5 class="fw-bold mb-0">Indiranagar</h5>
                             <small class="text-muted">42 Stations</small>
@@ -466,7 +501,8 @@
                 </div>
                 <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
                     <div class="stat-card p-0 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1590766948512-48366abc3d23?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="HSR">
+                        <img src="{{ asset('images/destinations/hsr.png') }}" class="img-fluid" alt="HSR"
+                            style="height: 200px; width: 100%; object-fit: cover;">
                         <div class="p-3">
                             <h5 class="fw-bold mb-0">HSR Layout</h5>
                             <small class="text-muted">38 Stations</small>
@@ -475,7 +511,8 @@
                 </div>
                 <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
                     <div class="stat-card p-0 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="Koramangala">
+                        <img src="{{ asset('images/destinations/koramangala.png') }}" class="img-fluid"
+                            alt="Koramangala" style="height: 200px; width: 100%; object-fit: cover;">
                         <div class="p-3">
                             <h5 class="fw-bold mb-0">Koramangala</h5>
                             <small class="text-muted">56 Stations</small>
@@ -484,53 +521,12 @@
                 </div>
                 <div class="col-md-3" data-aos="zoom-in" data-aos-delay="400">
                     <div class="stat-card p-0 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1622312678602-5e60d5b410f9?q=80&w=800&auto=format&fit=crop" class="img-fluid" alt="Whitefield">
+                        <img src="{{ asset('images/destinations/whitefield.png') }}" class="img-fluid" alt="Whitefield"
+                            style="height: 200px; width: 100%; object-fit: cover;">
                         <div class="p-3">
                             <h5 class="fw-bold mb-0">Whitefield</h5>
                             <small class="text-muted">29 Stations</small>
                         </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Member Experiences -->
-    <section class="py-100">
-        <div class="container text-center">
-            <h2 class="fw-bold display-5 mb-5" data-aos="fade-up">What our members say</h2>
-            <div class="row g-4">
-                <div class="col-md-4" data-aos="fade-right">
-                    <div class="stat-card">
-                        <div class="text-warning mb-3">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="fst-italic text-muted">"Finding a charger at 11 PM in a new neighborhood was so easy with chrgbnb. The host was helpful and the station worked perfectly."</p>
-                        <hr class="opacity-10">
-                        <h6 class="fw-bold mb-0">Rahul S.</h6>
-                        <small class="text-muted">EV Driver since 2024</small>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-up">
-                    <div class="stat-card">
-                        <div class="text-warning mb-3">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="fst-italic text-muted">"I earn enough from my home charger to pay for my entire electricity bill every month. Listing on chrgbnb was the best decision."</p>
-                        <hr class="opacity-10">
-                        <h6 class="fw-bold mb-0">Priya K.</h6>
-                        <small class="text-muted">Host in HSR Layout</small>
-                    </div>
-                </div>
-                <div class="col-md-4" data-aos="fade-left">
-                    <div class="stat-card">
-                        <div class="text-warning mb-3">
-                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
-                        </div>
-                        <p class="fst-italic text-muted">"The dynamic pricing feature is a game-changer. I get fair rates and the hosts are always happy to help. Highly recommended!"</p>
-                        <hr class="opacity-10">
-                        <h6 class="fw-bold mb-0">Amit V.</h6>
-                        <small class="text-muted">Tesla Owner</small>
                     </div>
                 </div>
             </div>
@@ -544,10 +540,13 @@
                 <div class="row align-items-center">
                     <div class="col-lg-7">
                         <h2 class="display-4 fw-bold mb-4">Turn your parking spot into a revenue stream.</h2>
-                        <p class="lead opacity-75 mb-5">Have a home charger or a dedicated parking space? List it on chrgbnb and start earning while you sleep.</p>
+                        <p class="lead opacity-75 mb-5">Have a home charger or a dedicated parking space? List it on
+                            chrgbnb and start earning while you sleep.</p>
                         <div class="d-flex gap-3">
-                            <a class="btn btn-primary btn-lg rounded-pill px-5 fw-bold" href="{{ route('register') }}">List Your Station</a>
-                            <a class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold border-0" href="#">Learn More <i class="fas fa-arrow-right ms-2"></i></a>
+                            <a class="btn btn-primary btn-lg rounded-pill px-5 fw-bold"
+                                href="{{ route('register') }}">List Your Station</a>
+                            <a class="btn btn-outline-light btn-lg rounded-pill px-5 fw-bold border-0" href="#">Learn
+                                More <i class="fas fa-arrow-right ms-2"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-5 d-none d-lg-block text-center">
@@ -564,12 +563,14 @@
             <div class="row g-4 mb-5">
                 <div class="col-lg-4">
                     <div class="navbar-brand mb-3 d-block"><i class="fas fa-bolt me-2"></i>chrgbnb</div>
-                    <p class="text-muted">Building the world's largest community-driven EV charging network. One socket at a time.</p>
+                    <p class="text-muted">Building the world's largest community-driven EV charging network. One socket
+                        at a time.</p>
                 </div>
                 <div class="col-6 col-lg-2 ms-lg-auto">
                     <h6 class="fw-bold mb-4">Platform</h6>
                     <ul class="list-unstyled text-muted">
-                        <li class="mb-2"><a href="{{ route('driver.search') }}" class="text-decoration-none text-muted">Find Chargers</a></li>
+                        <li class="mb-2"><a href="{{ route('driver.search') }}"
+                                class="text-decoration-none text-muted">Find Chargers</a></li>
                         <li class="mb-2"><a href="#host" class="text-decoration-none text-muted">List Station</a></li>
                         <li class="mb-2"><a href="#safety" class="text-decoration-none text-muted">Safety</a></li>
                     </ul>
@@ -600,7 +601,7 @@
             easing: 'ease-out-cubic'
         });
 
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             if (window.scrollY > 50) {
                 document.querySelector('.navbar').classList.add('scrolled');
             } else {
@@ -609,4 +610,5 @@
         });
     </script>
 </body>
+
 </html>

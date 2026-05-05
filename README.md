@@ -1,105 +1,120 @@
-# chrgbnb ⚡
-### The Airbnb for EV Charging
+# chrgbnb: The Decentralized EV Charging Ecosystem ⚡
 
-**chrgbnb** is a decentralized, community-driven electric vehicle (EV) charging network. It allows homeowners and businesses (Hosts) to list their private charging stations, and EV owners (Drivers) to find, book, and pay for charging sessions seamlessly.
-
-![Version](https://img.shields.io/badge/version-1.0.0-blue)
-![Laravel](https://img.shields.io/badge/Laravel-11.x-red)
-![License](https://img.shields.io/badge/license-MIT-green)
+**chrgbnb** is a production-grade, community-driven marketplace for Electric Vehicle (EV) charging. Built on a robust Laravel foundation, it bridges the gap between private energy providers (Hosts) and EV owners (Drivers), creating a seamless, scalable, and secure charging infrastructure.
 
 ---
 
-## 🌟 Key Features
+## 🏛️ System Architecture
 
-### 🏡 Premium Landing Page
-- **"ChargeBnB" Experience**: A high-end public storefront for guests.
-- **AOS Animations**: Modern scroll-based animations for an interactive feel.
-- **Public Map Discovery**: Guests can browse chargers and locations without logging in.
+chrgbnb is architected as a **Multi-Role SaaS Platform** with distinct operational silos for different user personas, ensuring high data isolation and security.
 
-### 🚗 Driver Experience
-- **Interactive Search**: Leaflet.js powered map with real-time location filtering.
-- **Dynamic Pricing**: Intelligent cost estimation based on charger type, power, and time of day.
-- **Booking Management**: Seamless flow from discovery to reservation.
-- **History Tracking**: View past charging sessions and total energy consumed.
+### Landing page
 
-### 🏠 Host Experience
-- **Station Management**: Add, edit, and monitor charging stations.
-- **QR Code System**: Generate unique QR codes for physical stations for instant driver access.
-- **Revenue Tracking**: Monitor earnings from shared energy.
-- **Status Control**: Toggle stations between 'Active' and 'Maintenance' modes.
+![alt text](image-2.png)
 
-### 👑 Admin Suite
-- **Global Overview**: Monitor the entire network, users, and bookings.
-- **User Management**: Oversee Hosts and Drivers.
+### Register page
+
+![alt text](image-3.png)
+
+### Car (Driver) Dashboard
+
+![alt text](image-4.png)
+
+### Host Dashboard
+
+![alt text](image-5.png)
+
+### Host Charger Network
+
+![alt text](image-7.png)
+![alt text](image-6.png)
+
+## Admin Dashboard
+
+![alt text](image-8.png)
+
+### 🔐 Multi-Tier Authentication & RBAC
+
+- **Admin Domain**: Centralized oversight of the entire charging network, user verification, and financial auditing.
+- **Host Domain**: Specialized interface for station management, dynamic pricing control, and revenue analytics.
+- **Driver Domain**: Consumer-facing experience focused on geospatial discovery, real-time availability, and secure booking.
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Core Engine Features
 
-- **Backend**: Laravel 11 (PHP 8.2+)
-- **Frontend**: Blade, Bootstrap 5, Vanilla JavaScript
-- **Maps**: Leaflet.js (OpenStreetMap)
-- **Styling**: Premium Custom CSS (Glassmorphism, Dark/Light modes)
-- **Animations**: AOS (Animate On Scroll), FontAwesome 6
-- **Database**: MySQL / PostgreSQL
+### 📡 High-Precision Search & Discovery
+
+- **Geospatial Mapping**: Integrated with Leaflet.js and OpenStreetMap for real-time station discovery.
+- **Intelligent Filtering**: Filter by power output (kW), connector type, and immediate availability.
+- **Location Clustering**: High-performance clustering algorithms for dense urban environments like Bangalore.
+
+### 💰 Dynamic Pricing Engine
+
+- **Minute-Based Precision**: Avoids rounding errors by calculating costs down to the minute.
+- **Variable Weighting**: Pricing dynamically scales based on charger speed (Ultra-Fast vs. AC) and duration.
+- **Escrow-Ready Logic**: Backend supports pre-calculation and locking of session prices to prevent rate fluctuations during charging.
+
+### 📊 Real-Time Analytics (Command Center)
+
+- **Chart.js Integration**: Visual representation of revenue trends and network growth.
+- **System Health Monitor**: Live tracking of API uptime, database latency, and network load.
+- **Event Logging**: Granular activity logs for all critical system actions (bookings, registrations, status changes).
 
 ---
 
-## 🚀 Installation Process
+## 🛠️ Technology Stack
 
-Follow these steps to get your local development environment running:
+| Layer             | Technology                        |
+| :---------------- | :-------------------------------- |
+| **Framework**     | Laravel 11 (PHP 8.2+)             |
+| **Frontend**      | Vanilla JS, Blade, Bootstrap 5    |
+| **Visualization** | Chart.js, Leaflet.js              |
+| **Animations**    | AOS (Animate On Scroll)           |
+| **Utilities**     | Carbon (Date/Time), FontAwesome 6 |
+| **Database**      | MariaDB / MySQL                   |
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/Sreeju7733/hackathon.git
-cd hackathon
-```
+---
 
-### 2. Install Dependencies
+## 🏗️ Deployment & Installation
+
+### 1. Environment Preparation
+
 ```bash
 composer install
 npm install && npm run build
-```
-
-### 3. Environment Configuration
-Copy the example environment file and configure your database settings:
-```bash
 cp .env.example .env
-```
-*Open `.env` and update `DB_DATABASE`, `DB_USERNAME`, and `DB_PASSWORD`.*
-
-### 4. Generate Application Key
-```bash
 php artisan key:generate
 ```
 
-### 5. Database Setup & Seeding
-Run the migrations and seed the database with demo accounts (Admin, Host, Driver) and chargers:
+### 2. Database Synchronization
+
+The project includes a comprehensive seeder that generates a realistic Bangalore-based charging network:
+
 ```bash
 php artisan migrate:fresh --seed
 ```
 
-### 6. Start the Server
+### 3. Application Lifecycle
+
 ```bash
 php artisan serve
 ```
-Visit `http://127.0.0.1:8000` to see the landing page!
 
 ---
 
-## 👤 Demo Credentials
+## 🛡️ Security & Reliability
 
-| Role | Email | Password |
-| :--- | :--- | :--- |
-| **Admin** | `admin@example.com` | `password` |
-| **Driver** | `driver@example.com` | `password` |
-| **Host** | `host@example.com` | `password` |
+- **Middleware Guarding**: Custom `CheckRole` middleware ensures strict cross-tenant isolation.
+- **Sanitized Inputs**: Full protection against SQL injection and XSS via Eloquent and Blade.
+- **Resilient Logic**: 500-error resistant pricing engine with strict type-casting and diagnostic logging.
 
 ---
 
 ## 📄 License
 
-The chrgbnb platform is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
-Developed with ❤️ by **Antigravity**
+
+**chrgbnb** — _Powering the community, one socket at a time._

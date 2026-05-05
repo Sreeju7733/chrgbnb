@@ -46,11 +46,35 @@
         }
 
         .badge-type {
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.7rem;
-            font-weight: 700;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 800;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .badge-ultra-fast {
+            background: linear-gradient(135deg, #ef4444 0%, #b91c1c 100%);
+            color: white;
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+        }
+
+        .badge-fast-dc {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+        }
+
+        .badge-fast-ac {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            color: white;
+        }
+
+        .btn-check:checked + label {
+            border-color: var(--primary) !important;
+            background-color: rgba(79, 70, 229, 0.05) !important;
+            box-shadow: 0 0 0 2px var(--primary) !important;
         }
 
         .price-tag {
@@ -421,9 +445,9 @@
         }
 
         function getBadgeClass(type) {
-            if (type === 'ultra_fast') return 'bg-danger text-white';
-            if (type === 'fast_dc') return 'bg-warning text-dark';
-            return 'bg-primary text-white';
+            if (type === 'ultra_fast') return 'badge-ultra-fast';
+            if (type === 'fast_dc') return 'badge-fast-dc';
+            return 'badge-fast-ac';
         }
 
         async function showDetails(id) {
@@ -529,6 +553,68 @@
             document.getElementById('searchForm').reset();
             document.getElementById('radiusValue').textContent = 10;
             performSearch();
+        });
+
+        // Geolocation logic
+        document.getElementById('autoLocateBtn').addEventListener('click', () => {
+            if (!navigator.geolocation) {
+                alert('Geolocation is not supported by your browser');
+                return;
+            }
+
+            const btn = document.getElementById('autoLocateBtn');
+            const icon = btn.querySelector('i');
+            icon.className = 'fas fa-spinner fa-spin';
+
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    const lat = position.coords.latitude;
+                    const lng = position.coords.longitude;
+                    
+                    document.getElementById('latitude').value = lat;
+                    document.getElementById('longitude').value = lng;
+                    
+                    map.setView([lat, lng], 15);
+                    window.searchMarker.setLatLng([lat, lng]);
+                    
+                    icon.className = 'fas fa-crosshairs';
+                    performSearch();
+                },
+                (error) => {
+                    icon.className = 'fas fa-crosshairs';
+                    alert('Error getting location: ' + error.message);
+                }
+            );
+        });
+
+        // Address Search logic (Nominatim)
+        let addressTimeout;
+        document.getElementById('addressSearch').addEventListener('input', (e) => {
+            clearTimeout(addressTimeout);
+            const query = e.target.value;
+            if (query.length < 3) return;
+
+            addressTimeout = setTimeout(async () => {
+                try {
+                    const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(query + ', Bangalore')}`);
+                    const data = await response.json();
+                    
+                    if (data && data.length > 0) {
+                        const result = data[0];
+                        const lat = parseFloat(result.lat);
+                        const lng = parseFloat(result.lon);
+                        
+                        document.getElementById('latitude').value = lat;
+                        document.getElementById('longitude').value = lng;
+                        
+                        map.setView([lat, lng], 15);
+                        window.searchMarker.setLatLng([lat, lng]);
+                        performSearch();
+                    }
+                } catch (err) {
+                    console.error('Address search failed:', err);
+                }
+            }, 800);
         });
 
         window.addEventListener('load', initMap);

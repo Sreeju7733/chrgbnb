@@ -19,21 +19,30 @@ class DatabaseSeeder extends Seeder
             'role' => 'admin',
         ]);
 
-        // Driver Account
+        // Default Driver Account
         User::factory()->create([
             'name' => 'Professional Driver',
             'email' => 'driver@example.com',
             'role' => 'driver',
         ]);
 
-        // Host Account
+        // Default Host Account
         User::factory()->create([
             'name' => 'Property Host',
             'email' => 'host@example.com',
             'role' => 'host',
         ]);
 
+        // Generate 20 random Drivers
+        User::factory()->count(20)->create(['role' => 'driver']);
+
+        // Generate 25 random Hosts
+        User::factory()->count(25)->create(['role' => 'host']);
+
         // Call the ChargerSeeder
         $this->call(ChargerSeeder::class);
+
+        // Call the BookingSeeder (I will create this)
+        $this->call(BookingSeeder::class);
     }
 }
