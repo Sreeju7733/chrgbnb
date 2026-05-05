@@ -19,9 +19,13 @@ chrgbnb is architected as a **Multi-Role SaaS Platform** with distinct operation
 ### Car (Driver) Dashboard
 
 ![alt text](image-4.png)
+![alt text](image-11.png)
+![alt text](image-9.png)
+![alt text](image-10.png)
 
 ### Host Dashboard
 
+Already have an account? Sign In
 ![alt text](image-5.png)
 
 ### Host Charger Network
@@ -32,6 +36,10 @@ chrgbnb is architected as a **Multi-Role SaaS Platform** with distinct operation
 ## Admin Dashboard
 
 ![alt text](image-8.png)
+
+## SQL Architecture
+
+![alt text](<image(2).png>)
 
 ### 🔐 Multi-Tier Authentication & RBAC
 
