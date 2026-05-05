@@ -237,6 +237,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto align-items-center" data-aos="fade-left">
                     <li class="nav-item"><a class="nav-link" href="#how-it-works">How it Works</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#safety">Safety</a></li>
                     <li class="nav-item"><a class="nav-link" href="#host">Become a Host</a></li>
                     @guest
                         <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">Sign In</a></li>
@@ -319,6 +321,59 @@
                     <div class="stat-card">
                         <div class="stat-number">50k+</div>
                         <div class="fw-bold text-muted uppercase small">Happy Drivers</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-100 bg-white">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h6 class="text-primary fw-bold text-uppercase mb-3">Our Mission</h6>
+                    <h2 class="display-5 fw-bold mb-4">Democratizing Energy for a Greener Future.</h2>
+                    <p class="text-muted mb-4">At chrgbnb, we believe that the transition to electric vehicles shouldn't be limited by centralized infrastructure. We are building a community-driven network where anyone can share their energy and contribute to a sustainable world.</p>
+                    <div class="row g-4 mb-5">
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fas fa-leaf text-success fs-4"></i>
+                                <span class="fw-bold">100% Sustainable</span>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="d-flex align-items-center gap-2">
+                                <i class="fas fa-hand-holding-dollar text-primary fs-4"></i>
+                                <span class="fw-bold">Fair Earnings</span>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="{{ route('register') }}" class="btn btn-primary rounded-pill px-5 py-3 fw-bold">Learn Our Story</a>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="row g-4">
+                        <div class="col-6">
+                            <div class="stat-card bg-light border-0 py-5">
+                                <h3 class="fw-bold mb-1">2.4k</h3>
+                                <p class="text-muted small mb-0">Cities Covered</p>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="stat-card bg-primary text-white border-0 py-5">
+                                <h3 class="fw-bold mb-1">500k+</h3>
+                                <p class="text-muted small mb-0">Charges Completed</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="stat-card bg-dark text-white border-0 py-4 d-flex align-items-center justify-content-center gap-3">
+                                <i class="fas fa-award fs-2 text-warning"></i>
+                                <div class="text-start">
+                                    <h5 class="fw-bold mb-0">Best EV Startup 2026</h5>
+                                    <p class="text-white-50 small mb-0">Innovation Award winner</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -514,8 +569,17 @@
                 <div class="col-6 col-lg-2 ms-lg-auto">
                     <h6 class="fw-bold mb-4">Platform</h6>
                     <ul class="list-unstyled text-muted">
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Find Chargers</a></li>
-                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">List Station</a></li>
+                        <li class="mb-2"><a href="{{ route('driver.search') }}" class="text-decoration-none text-muted">Find Chargers</a></li>
+                        <li class="mb-2"><a href="#host" class="text-decoration-none text-muted">List Station</a></li>
+                        <li class="mb-2"><a href="#safety" class="text-decoration-none text-muted">Safety</a></li>
+                    </ul>
+                </div>
+                <div class="col-6 col-lg-2">
+                    <h6 class="fw-bold mb-4">Company</h6>
+                    <ul class="list-unstyled text-muted">
+                        <li class="mb-2"><a href="#about" class="text-decoration-none text-muted">About Us</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Blog</a></li>
+                        <li class="mb-2"><a href="#" class="text-decoration-none text-muted">Careers</a></li>
                     </ul>
                 </div>
             </div>
