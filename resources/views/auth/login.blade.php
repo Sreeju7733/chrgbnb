@@ -232,20 +232,9 @@
                 <label class="form-check-label small text-muted fw-medium" for="remember">Remember this device</label>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100 py-3 mb-4 shadow-sm">
+            <button type="submit" class="btn btn-primary w-100 py-3 mb-2 shadow-sm">
                 Sign In Now <i class="fas fa-arrow-right ms-2"></i>
             </button>
-
-            <div class="divider">or continue with</div>
-
-            <div class="row g-3">
-                <div class="col-12">
-                    <a href="#" class="social-btn">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="18" alt="Google">
-                        Sign in with Google
-                    </a>
-                </div>
-            </div>
         </form>
 
         <div class="auth-footer">
