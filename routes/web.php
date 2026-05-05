@@ -73,9 +73,10 @@ Route::middleware([SecurityHeaders::class])->group(function () {
                 default => redirect('/login')->with('error', 'Invalid user role'),
             };
         })->name('dashboard');
-
-        Route::get('/', function () {
-            return redirect()->route('dashboard');
-        })->name('home');
     });
 });
+
+// Public Landing Page
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
