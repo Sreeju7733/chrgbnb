@@ -98,46 +98,6 @@
             box-shadow: 0 15px 30px -5px rgba(37, 99, 235, 0.4);
         }
 
-        .social-btn {
-            background: white;
-            border: 1px solid #e2e8f0;
-            border-radius: 18px;
-            padding: 0.85rem;
-            color: var(--text-main);
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.2s;
-            text-decoration: none;
-        }
-
-        .social-btn:hover {
-            background: #f8fafc;
-            border-color: #cbd5e1;
-            color: var(--primary);
-        }
-
-        .divider {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--text-muted);
-            margin: 2rem 0;
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .divider::before, .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .divider:not(:empty)::before { margin-right: 1.25rem; }
-        .divider:not(:empty)::after { margin-left: 1.25rem; }
-
         .auth-footer {
             text-align: center;
             margin-top: 2.5rem;
