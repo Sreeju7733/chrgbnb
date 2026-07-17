@@ -1,4 +1,4 @@
-# chrgbnb: The Decentralized EV Charging Ecosystem ⚡
+# chrgbnb: The Decentralized EV Charging Ecosystem
 
 **chrgbnb** is a production-grade, community-driven marketplace for Electric Vehicle (EV) charging. Built on a robust Laravel foundation, it bridges the gap between private energy providers (Hosts) and EV owners (Drivers), creating a seamless, scalable, and secure charging infrastructure.
 
@@ -41,7 +41,7 @@ Already have an account? Sign In
 
 ![alt text](<image(2).png>)
 
-### 🔐 Multi-Tier Authentication & RBAC
+### Multi-Tier Authentication & RBAC
 
 - **Admin Domain**: Centralized oversight of the entire charging network, user verification, and financial auditing.
 - **Host Domain**: Specialized interface for station management, dynamic pricing control, and revenue analytics.
@@ -49,21 +49,21 @@ Already have an account? Sign In
 
 ---
 
-## 🚀 Core Engine Features
+## Core Engine Features
 
-### 📡 High-Precision Search & Discovery
+### High-Precision Search & Discovery
 
 - **Geospatial Mapping**: Integrated with Leaflet.js and OpenStreetMap for real-time station discovery.
 - **Intelligent Filtering**: Filter by power output (kW), connector type, and immediate availability.
 - **Location Clustering**: High-performance clustering algorithms for dense urban environments like Bangalore.
 
-### 💰 Dynamic Pricing Engine
+### Dynamic Pricing Engine
 
 - **Minute-Based Precision**: Avoids rounding errors by calculating costs down to the minute.
 - **Variable Weighting**: Pricing dynamically scales based on charger speed (Ultra-Fast vs. AC) and duration.
 - **Escrow-Ready Logic**: Backend supports pre-calculation and locking of session prices to prevent rate fluctuations during charging.
 
-### 📊 Real-Time Analytics (Command Center)
+### Real-Time Analytics (Command Center)
 
 - **Chart.js Integration**: Visual representation of revenue trends and network growth.
 - **System Health Monitor**: Live tracking of API uptime, database latency, and network load.
@@ -71,7 +71,7 @@ Already have an account? Sign In
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 | Layer             | Technology                        |
 | :---------------- | :-------------------------------- |
@@ -84,7 +84,7 @@ Already have an account? Sign In
 
 ---
 
-## 🏗️ Deployment & Installation
+## Deployment & Installation
 
 ### 1. Environment Preparation
 
@@ -111,7 +111,7 @@ php artisan serve
 
 ---
 
-## 🛡️ Security & Reliability
+## Security & Reliability
 
 - **Middleware Guarding**: Custom `CheckRole` middleware ensures strict cross-tenant isolation.
 - **Sanitized Inputs**: Full protection against SQL injection and XSS via Eloquent and Blade.
@@ -119,7 +119,7 @@ php artisan serve
 
 ---
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
